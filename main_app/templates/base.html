@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cat Collector</title>
+    <title>Travel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
@@ -23,8 +23,10 @@
                         <!-- changes below -->
                         <li><a href="{% url 'home' %}">Home</a></li>
                         {% if user.is_authenticated %}
+                        <li><a href="{% url 'index' %}">Destinations</a></li>
                         <li><a href="{% url 'logout' %}">Log Out</a></li>
                         {% else %}
+                        <li><a href="{% url 'about' %}">About</a></li>
                         <li><a href="{% url 'signup' %}">Sign Up</a></li>
                         <li><a href="{% url 'login' %}">Log In</a></li>
                         {% endif %}
@@ -38,7 +40,7 @@
         {% endblock %}
     </main>
     <footer class=“page-footer”>
-        <div class=“right”>All Rights Reserved, &copy; 2021 Cat Collector &nbsp;</div>
+        <div class=“right”>Travel</div>
     </footer>
 </body>
 
