@@ -3,5 +3,11 @@
 
 <h1>Destination List</h1>
 
+<label for="destinations">Choose a destination</label>
+{% for destination in destinations %}
+	<div>
+		<a href="{% url 'detail' destination.id %}">{{ destination.city }}</a>
+	</div>
+{% endfor %}
 
 {% endblock %}
