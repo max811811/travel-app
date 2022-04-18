@@ -19,7 +19,8 @@ def destinations_index(request):
 	return render(request, 'destinations/index.html')
 
 def destinations_detail(request, destination_id):
-	return render(request, 'destinations/detail.html')
+    destination = destination.objects.get(id=destination_id)
+    return render(request, 'destinations/detail.html', {'destination': destination})
 
 def signup(request):
     error_message = ''
