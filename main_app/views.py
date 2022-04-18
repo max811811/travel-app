@@ -15,8 +15,8 @@ def about(request):
     return render(request, 'about.html')
 
 def destinations_index(request):
-	# destinations = Destination.objects.all()
-	return render(request, 'destinations/index.html')
+	destinations = Destination.objects.all()
+	return render(request, 'destinations/index.html', {'destinations': destinations})
 
 def destinations_detail(request, destination_id):
     destination = destination.objects.get(id=destination_id)
