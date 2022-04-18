@@ -2,11 +2,16 @@ body {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
+	background-color: #f7f9fb;
 }
 
 main {
 	flex: 1 0 auto;
 	margin: 10px;
+}
+
+.nav-wrapper {
+	background-color: #31708e !important;
 }
 
 .container {
@@ -20,5 +25,5 @@ footer.page-footer {
 }
 
 footer {
-	background-color: #ee6e73;
+	background-color: #31708e;
 }
