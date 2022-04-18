@@ -10,7 +10,7 @@ class Destination(models.Model):
     country = models.CharField(max_length=30)
     time_zone = models.CharField(max_length=20)
     location_description = models.TextField(max_length=200)
-  # Add the foreign key linking to a user instance
+  
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -18,3 +18,10 @@ class Destination(models.Model):
 
     def get_absolute_url(self):
         return reverse('')
+
+class Attraction(models.Model):
+	description = models.CharField(max_length=500)
+	location = models.CharField(max_length=100)
+	price = models.IntegerField()
+
+	destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
