@@ -1,0 +1,24 @@
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+	margin: 10px;
+}
+
+.container {
+	margin: 0 auto;
+	display: border-box;
+}
+
+footer.page-footer {
+	padding-top: 0;
+	text-align: right;
+}
+
+footer {
+	background-color: #ee6e73;
+}
