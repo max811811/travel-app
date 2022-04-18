@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Destination Detail</h1>
+<h1>{{ destination.city }}</h1>
+
+<div>
+	<p>{{ destination.city }}</p>
+	<p>{{ destination.country }}</p>
+	<p>{{ destination.time_zone }}</p>
+	<p>{{ destination.location_description }}</p>
+</div>
 
 
 {% endblock %}
