@@ -2,11 +2,16 @@ body {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
+	background-color: #edf5e1;
 }
 
 main {
 	flex: 1 0 auto;
 	margin: 10px;
+}
+
+nav {
+	background-color: #05386b;
 }
 
 .container {
@@ -20,5 +25,31 @@ footer.page-footer {
 }
 
 footer {
-	background-color: #ee6e73;
+	background-color: #05386b;
+	color: white;
+}
+
+.detail-header, p {
+	text-align: center;
+}
+
+.description {
+	font-size: 20px;
+}
+
+.card-content {
+	margin: 20px;
+	border-radius: 20px;
+	text-align: center;
+	background-color: #8ee4af;
+	width: 300px;
+	padding: 24px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	color: #05386b;
+	align-items: center;
+	font-size: 20px;
+}
+
+a {
+	text-decoration: none;
 }

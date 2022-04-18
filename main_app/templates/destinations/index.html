@@ -2,12 +2,14 @@
 {% block content %}
 
 <h1>Destination List</h1>
-
-<label for="destinations">Choose a destination</label>
-{% for destination in destinations %}
-	<div>
-		<a href="{% url 'detail' destination.id %}">{{ destination.city }}</a>
-	</div>
-{% endfor %}
-
+<div class="layout">
+	<label for="destinations">Choose a destination</label>
+	{% for destination in destinations %}
+		<a href="{% url 'detail' destination.id %}">
+			<div class="card-content">
+			{{ destination.city }}
+			</div>
+		</a>
+	{% endfor %}
+</div>
 {% endblock %}
