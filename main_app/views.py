@@ -50,8 +50,9 @@ def signup(request):
 
 def add_review(request, attraction_id):
     form = ReviewForm(request.POST)
+    # destination = Destination.objects.get(id=destination_id)
     if form.is_valid():
         new_review = form.save(commit=False)
         new_review.attraction_id = attraction_id
         new_review.save()
-    return redirect('attractions_detail', attraction_id=attraction_id)
+    return redirect('index')
