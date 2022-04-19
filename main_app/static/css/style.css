@@ -41,8 +41,6 @@ footer {
 .card-content {
 	border-radius: 20px;
 	text-align: center;
-	background-color: rgb(249, 167, 134);
-	width: 300px;
 	padding: 24px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	color: #05386b;
@@ -57,4 +55,8 @@ a {
 
 .col {
 	padding: 20px;
+}
+
+.card-action > a {
+	color:#5f9ea0 !important;
 }
