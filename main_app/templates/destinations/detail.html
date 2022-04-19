@@ -3,7 +3,9 @@
 
 
 <h1 class="detail-header">{{ destination.city }}</h1>
-
+<div class="detail-photo" >
+	<img src="{{ destination.photo }}">
+</div>
 <div>
 	<p>{{ destination.country }}</p>
 	<p>Timezone: {{ destination.time_zone }}</p>
@@ -12,11 +14,18 @@
 
 <div class="row">
 	{% for attraction in destination.attraction_set.all %}
-		<a href="{% url 'attractions_detail' destination.id attraction.id %}">
-			<div class="card-content col s3 offset-s2">
-				{{ attraction.name }}
+	<div class="col s3 m3">
+		<div class="card">
+			<div class="card-image">
+				<img src="{{ attraction.photo }}">
 			</div>
-		</a>
+			<a href="{% url 'attractions_detail' destination.id attraction.id %}">
+				<div class="card-content s4 m4">
+					{{ attraction.name }}
+				</div>
+			</a>
+		</div>
+	</div>
 	{% endfor %}
 </div>
 
