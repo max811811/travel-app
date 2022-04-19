@@ -5,17 +5,16 @@
 
 <div class="row">
 	{% for destination in destinations %}
-	<div class="col s6 m6">
-		<div class="card ">
+	<div class="col s3 m3">
+		<div class="card">
 			<div class="card-image">
 				<img src="{{ destination.photo }}">
 			</div>
-			<div class="card-content">
-				<span class="card-title">{{ destination.city }}</span>
-			</div>
-			<div class="card-action">
-				<a href="{% url 'detail' destination.id %}">Details</a>
-			</div>
+			<a href="{% url 'detail' destination.id %}">
+				<div class="card-content s4 m4">
+					<span class="card-title">{{ destination.city }}</span>
+				</div>
+			</a>
 		</div>
 	</div>
 	{% endfor %}
