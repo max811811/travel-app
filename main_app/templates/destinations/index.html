@@ -2,11 +2,10 @@
 {% block content %}
 
 <h1>Destination List</h1>
-<div class="layout">
-	<label for="destinations">Choose a destination</label>
+<div class="row">
 	{% for destination in destinations %}
 		<a href="{% url 'detail' destination.id %}">
-			<div class="card-content">
+			<div class="card-content col s5 offset-s1">
 			{{ destination.city }}
 			</div>
 		</a>

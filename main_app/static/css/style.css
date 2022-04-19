@@ -39,18 +39,22 @@ footer {
 }
 
 .card-content {
-	margin: 20px;
 	border-radius: 20px;
 	text-align: center;
-	background-color: #93d2d4;
+	background-color: rgb(249, 167, 134);
 	width: 300px;
 	padding: 24px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	color: #05386b;
 	align-items: center;
-	font-size: 20px;
+	font-size: 30px;
+	margin-bottom: 50px;
 }
 
 a {
 	text-decoration: none;
+}
+
+.col {
+	padding: 20px;
 }
