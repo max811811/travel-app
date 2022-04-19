@@ -29,15 +29,19 @@ class Destination(models.Model):
 
 
 class Attraction(models.Model):
-	name = models.CharField(max_length=100, default='')
-	description = models.CharField(max_length=500)
-	location = models.CharField(max_length=100)
-	price = models.IntegerField()
-	
-	destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, default='')
+    description = models.CharField(max_length=500)
+    location = models.CharField(max_length=100)
+    price = models.IntegerField()
+        
+    destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
 
-	def __str__(self):
-		return self.name
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('attractions_detail', kwargs={'pk': self.id})
+    
 
 
 class Review(models.Model):
