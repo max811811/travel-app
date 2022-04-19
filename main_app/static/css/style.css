@@ -2,7 +2,7 @@ body {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
-	background-color: #edf5e1;
+	background-color: #dcdcdc;
 }
 
 main {
@@ -11,7 +11,8 @@ main {
 }
 
 nav {
-	background-color: #05386b;
+	background-color: #5f9ea0;
+	color: #05386b;
 }
 
 .container {
@@ -25,8 +26,8 @@ footer.page-footer {
 }
 
 footer {
-	background-color: #05386b;
-	color: white;
+	background-color: #5f9ea0;
+	color: #05386b;
 }
 
 .detail-header, p {
@@ -41,7 +42,7 @@ footer {
 	margin: 20px;
 	border-radius: 20px;
 	text-align: center;
-	background-color: #8ee4af;
+	background-color: #93d2d4;
 	width: 300px;
 	padding: 24px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
