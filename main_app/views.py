@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -48,11 +48,11 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-def add_review(request, attraction_id):
+def add_review(request, destination_id, attraction_id):
+    destination_id = Destination.objects.get(id=destination_id)
     form = ReviewForm(request.POST)
-    # destination = Destination.objects.get(id=destination_id)
     if form.is_valid():
         new_review = form.save(commit=False)
         new_review.attraction_id = attraction_id
         new_review.save()
-    return redirect('index')
+    return reverse('destinations/attractions/detail', destination_id=destination_id, attraction_id=attraction_id)

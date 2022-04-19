@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="detail-header">Attraction details</h1>
+<div class="col s6">
+	<table class="stripped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Location</th>
+				<th>Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{ attraction.name }}</td>
+				<td>{{ attraction.description }}</td>
+				<td>{{ attraction.location }}</td>
+				<td>{{ attraction.price }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="col s6">
+	<form action="{% url 'add_review' attraction.id %}" method="POST">
+		{% csrf_token %}
+		{{ review_form.as_p }}
+		<input type="submit" class="btn" value="Add Review">
+	</form>
+	<table class="striped">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Rating</th>
+				<th>Review</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for review in attraction.review_set.all %}
+			<tr>
+				<td>{{review.date}}</td>
+				<td>{{review.get_rating_display}}</td>
+				<td>{{review.review_text}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+</div>
+
+<script>
+	const dateEl = document.getElementById('id_date');
+	M.Datepicker.init(dateEl, {
+		format: 'yyyy-mm-dd',
+		defaultDate: new Date(),
+		setDefaultDate: true,
+		autoClose: true
+	});
+
+	const selectEl = document.getElementById('id_rating');
+	M.FormSelect.init(selectEl);
+</script>
+
+{% endblock %}
