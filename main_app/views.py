@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Destination, Attraction
+from .forms import ReviewForm
 
 # Create your views here.
 
@@ -25,7 +26,8 @@ def destinations_detail(request, destination_id):
 def attractions_detail(request, destination_id, attraction_id):
     destination = Destination.objects.get(id=destination_id)
     attraction = Attraction.objects.get(id=attraction_id)
-    return render(request, 'destinations/attractions/detail.html', {'destination': destination, "attractions_detail": attractions_detail})
+    review_form = ReviewForm()
+    return render(request, 'destinations/attractions/detail.html', {'destination': destination, "attraction": attraction, 'review_form': review_form})
 
 def signup(request):
     error_message = ''
@@ -45,3 +47,11 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+def add_review(request, attraction_id):
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+        new_review = form.save(commit=False)
+        new_review.attraction_id = attraction_id
+        new_review.save()
+    return redirect('attractions_detail', attraction_id=attraction_id)
