@@ -5,17 +5,15 @@
 <div class="col s6">
   <table class="stripped">
     <thead>
-      <tr><th>Name</th><th>Descpription</th><th>Location</th><th>Price</th></tr>
+      <tr><th>Name</th><th>Description</th><th>Location</th><th>Price</th></tr>
     </thead>
     <tbody>
-      {% for attraction in destination.attraction_set.all %}
         <tr>
           <td>{{ attraction.name }}</td>
           <td>{{ attraction.description }}</td>
           <td>{{ attraction.location }}</td>
           <td>{{ attraction.price }}</td>
         </tr>
-        {% endfor %}
     </tbody>
   </table>
 </div>
