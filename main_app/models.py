@@ -56,5 +56,8 @@ class Review(models.Model):
     def __str__(self):
         return f"{self.get_rating_display()} on {self.date}"
 
+    def get_absolute_url(self):
+        return reverse('attractions_detail', kwargs={'attraction_id': self.id})
+
     class Meta:
         ordering = ['date']
