@@ -33,8 +33,8 @@ class Attraction(models.Model):
 	description = models.CharField(max_length=500)
 	location = models.CharField(max_length=100)
 	price = models.IntegerField()
-	website = models.URLField
-	# photo = models.URLField()
+	website = models.URLField(default='')
+	photo = models.URLField(default='')
         
 	destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
 
