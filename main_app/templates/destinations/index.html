@@ -1,14 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Destination List</h1>
+<h1 class="detail-header">Destinations</h1>
+
 <div class="row">
 	{% for destination in destinations %}
-		<a href="{% url 'detail' destination.id %}">
-			<div class="card-content col s5 offset-s1">
-			{{ destination.city }}
+	<div class="col s6 m6">
+		<div class="card">
+			<div class="card-image">
+				<p>test</p>
 			</div>
-		</a>
+			<div class="card-content">
+				<span class="card-title">{{ destination.city }}</span>
+			</div>
+			<div class="card-action">
+				<a href="#">Details</a>
+			</div>
+		</div>
+	</div>
 	{% endfor %}
 </div>
+
 {% endblock %}
