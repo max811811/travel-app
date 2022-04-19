@@ -2,7 +2,7 @@ body {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
-	background-color: #edf5e1;
+	background-color: #dcdcdc;
 }
 
 main {
@@ -11,7 +11,8 @@ main {
 }
 
 nav {
-	background-color: #05386b;
+	background-color: #5f9ea0;
+	color: #05386b;
 }
 
 .container {
@@ -25,8 +26,8 @@ footer.page-footer {
 }
 
 footer {
-	background-color: #05386b;
-	color: white;
+	background-color: #5f9ea0;
+	color: #05386b;
 }
 
 .detail-header, p {
@@ -38,18 +39,22 @@ footer {
 }
 
 .card-content {
-	margin: 20px;
 	border-radius: 20px;
 	text-align: center;
-	background-color: #8ee4af;
+	background-color: rgb(249, 167, 134);
 	width: 300px;
 	padding: 24px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	color: #05386b;
 	align-items: center;
-	font-size: 20px;
+	font-size: 30px;
+	margin-bottom: 50px;
 }
 
 a {
 	text-decoration: none;
+}
+
+.col {
+	padding: 20px;
 }

@@ -29,11 +29,15 @@ class Destination(models.Model):
 
 
 class Attraction(models.Model):
-    description = models.CharField(max_length=500)
-    location = models.CharField(max_length=100)
-    price = models.IntegerField()
+	name = models.CharField(max_length=100, default='')
+	description = models.CharField(max_length=500)
+	location = models.CharField(max_length=100)
+	price = models.IntegerField()
+	
+	destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
 
-    destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
+	def __str__(self):
+		return self.name
 
 
 class Review(models.Model):
