@@ -5,37 +5,19 @@
 <h1 class="detail-header">{{ destination.city }}</h1>
 
 <div>
-	<p>{{ destination.city }}</p>
 	<p>{{ destination.country }}</p>
-	<p>{{ destination.time_zone }}</p>
-	<p>{{ destination.location_description }}</p>
-</div>
-
-<div>
-	<p>{{ destination.city }}</p>
-	<p>{{ destination.country }}</p>
-	<p>{{ destination.time_zone }}</p>
+	<p>Timezone: {{ destination.time_zone }}</p>
 	<p class="description">{{ destination.location_description }}</p>
 </div>
-<div class="'card-action">
-	<a href="{% url 'destinations_update' destination.id%}">Edit</a>
-	<a href="{% url 'destinations_delete' destination.id%}">Delete</a>
-</div>
-<div class="col s6">
-	<table class="stripped">
-		<thead>
-			<tr><th>Date</th><th>Attraction</th></tr>
-		</thead>
-		<tbody>
-			{% for attraction in destination.attraction_set.all %}
-			<tr>
-				<td>{{ attraction.description }}</td>
-				<td>{{ attraction.location }}</td>
-				<td>{{ acctraction.price }}</td>
-			</tr>}
-			{% endfor %}
-		</tbody>
-	</table>
+
+<div class="row">
+	{% for attraction in destination.attraction_set.all %}
+		<a href="{% url 'attractions_detail' destination.id attraction.id %}">
+			<div class="card-content col s5 offset-s1">
+				{{ attraction.name }}
+			</div>
+		</a>
+	{% endfor %}
 </div>
 
 {% endblock %}

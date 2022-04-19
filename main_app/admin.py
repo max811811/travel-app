@@ -8,7 +8,3 @@ admin.site.register(Destination)
 admin.site.register(Attraction)
 admin.site.register(Review)
 
-from .models import Destination
-
-admin.site.register(Destination)
-
