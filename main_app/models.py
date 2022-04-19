@@ -14,19 +14,19 @@ RATING = (
 
 
 class Destination(models.Model):
-    city = models.CharField(max_length=30)
-    country = models.CharField(max_length=30)
-    time_zone = models.CharField(max_length=20)
-    location_description = models.TextField(max_length=200)
-
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.city
-
-    def get_absolute_url(self):
-        return reverse('')
-
+	city = models.CharField(max_length=30)
+	country = models.CharField(max_length=30)
+	time_zone = models.CharField(max_length=20)
+	location_description = models.TextField(max_length=200)
+	photo = models.ImageField(upload_to='destinations', default='')
+	
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	
+	def __str__(self):
+		return self.city
+		
+	def get_absolute_url(self):
+		return reverse('')
 
 class Attraction(models.Model):
     name = models.CharField(max_length=100, default='')
