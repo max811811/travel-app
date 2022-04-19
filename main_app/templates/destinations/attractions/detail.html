@@ -3,6 +3,23 @@
 
 <h1 class="detail-header">Attraction details</h1>
 <div class="col s6">
+  <table class="stripped">
+    <thead>
+      <tr><th>Name</th><th>Descpription</th><th>Location</th><th>Price</th></tr>
+    </thead>
+    <tbody>
+      {% for attraction in destination.attraction_set.all %}
+        <tr>
+          <td>{{ attraction.name }}</td>
+          <td>{{ attraction.description }}</td>
+          <td>{{ attraction.location }}</td>
+          <td>{{ attraction.price }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="col s6">
     <form action="{% url 'add_review' attraction.id %}" method="POST">
         {% csrf_token %}
         {{ review_form.as_p }}
