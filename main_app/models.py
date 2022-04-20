@@ -15,7 +15,7 @@ RATING = (
 
 
 class Destination(models.Model):
-	
+
 	city = models.CharField(max_length=30)
 	country = models.CharField(max_length=30)
 	time_zone = models.CharField(max_length=20)
@@ -60,6 +60,7 @@ class Review(models.Model):
 		return f"{self.get_rating_display()} on {self.date}"
 	class Meta:
 		ordering = ['date']
-	
+
 	def get_absolute_url(self):
-		return reverse('attractions_detail', kwargs={'destination_id': self.destination.id, 'attraction': self.attraction.id})
+		print(self.attraction.destination)
+		return reverse('attractions_detail', kwargs={'destination_id': self.attraction.destination.id, 'attraction_id': self.attraction.id})
