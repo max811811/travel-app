@@ -7,29 +7,42 @@
 	<img src="{{ destination.photo }}">
 </div>
 <div>
-	<!-- <p>{{ destination.country }}</p> -->
-	<p>City: {{ temperature_time_zone.city }}</p>
-	<p>Temp: {{ temperature_time_zone.temp }}</p>
-	<!-- <p>test: {{ temptimezone }}</p>
-	<p>Temperature Farenheit: {{ temperatureF }}</p>
-	<p class="description">{{ destination.location_description }}</p> -->
-</div>
-
-<div class="row">
-	{% for attraction in destination.attraction_set.all %}
-	<div class="col s3 m3">
-		<div class="card">
-			<div class="card-image">
-				<img src="{{ attraction.photo }}">
-			</div>
-			<a href="{% url 'attractions_detail' destination.id attraction.id %}">
-				<div class="card-content s4 m4">
-					{{ attraction.name }}
-				</div>
-			</a>
+	<div class="row">
+		<div class="card key-info col s2 offset-s5">
+			<h5 class="detail-header">Key info:</h5>
+			<p>{{ destination.country }}</p>
+			<p>Timezone: {{ destination.time_zone }}</p>
 		</div>
 	</div>
-	{% endfor %}
+	<div class="row">
+		<div class="card-content temp col s2 offset-s5">
+			<!-- <p>{{ destination.country }}</p> -->
+			<h5>{{ temperature_time_zone.city }}</h5>
+			<p>Current temperature: {{ temperature_time_zone.temp }}&#8457</p>
+			<!-- <p>test: {{ temptimezone }}</p>
+			<p>Temperature Farenheit: {{ temperatureF }}</p>
+			<p class="description">{{ destination.location_description }}</p> -->
+		</div>
+	</div>	
+	<div>
+		<p class="description">{{ destination.location_description }}</p>
+	</div>
+	<div class="row">
+		<h4 class="detail-header">Attractions</h4>
+		{% for attraction in destination.attraction_set.all %}
+		<div class="col s3 m3">
+			<div class="card">
+				<div class="card-image">
+					<img src="{{ attraction.photo }}">
+				</div>
+				<a href="{% url 'attractions_detail' destination.id attraction.id %}">
+					<div class="card-content s4 m4">
+						<span class="card-title">{{ attraction.name }}</span> 
+					</div>
+				</a>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
 </div>
-
 {% endblock %}

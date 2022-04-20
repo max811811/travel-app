@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 
 # Create your models here.
@@ -29,7 +29,7 @@ class Destination(models.Model):
 		return self.city
 		
 	def get_absolute_url(self):
-		return reverse('')
+		return reverse('', kwargs={'pk': self.id})
 
 class Attraction(models.Model):
 	name = models.CharField(max_length=100, default='')
@@ -50,17 +50,21 @@ class Attraction(models.Model):
 
 
 class Review(models.Model):
-    date = models.DateField('review date')
-    rating = models.IntegerField(choices=RATING, default=RATING[0][0])
-    review_text = models.TextField(max_length=100)
+	date = models.DateField('review date')
+	rating = models.IntegerField(choices=RATING, default=RATING[0][0])
+	review_text = models.TextField(max_length=100)
 
-    attraction = models.ForeignKey(Attraction, on_delete=models.CASCADE)
+	attraction = models.ForeignKey(Attraction, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f"{self.get_rating_display()} on {self.date}"
+	def __str__(self):
+		return f"{self.get_rating_display()} on {self.date}"
 
-    def get_absolute_url(self):
-        return reverse('attractions_detail', kwargs={'attraction_id': self.id, 'destination_id': self.destination_id})
+	def get_absolute_url(self):
+		return reverse('attractions_detail', kwargs={'destination_id': self.id, 'attraction_id': self.attraction.id})
 
-    class Meta:
-        ordering = ['date']
+	class Meta:
+		ordering = ['date']
+
+
+	def get_absolute_url(self):
+		return reverse('attractions_detail', kwargs={'destination_id': self.id, 'attraction': self.attraction.id})

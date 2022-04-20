@@ -3,6 +3,7 @@ body {
 	min-height: 100vh;
 	flex-direction: column;
 	background-color: #dcdcdc;
+	font-family: 'Raleway', sans-serif;
 }
 
 main {
@@ -49,17 +50,40 @@ footer {
 
 a {
 	text-decoration: none;
+	color: white;
 }
 
 .col {
 	padding: 20px;
 }
 
-.card-title {
+.card-title, .temp {
 	color: #5f9ea0;
 }
 
 .detail-photo {
 	display: flex;
 	justify-content: center;
+}
+
+.key-info {
+	background-color: #5f9ea0;
+	color: white;
+	border-radius: 10px;
+}
+
+td > a {
+	color: #5f9ea0;
+}
+
+a:hover {
+	opacity: 70%;
+}
+
+h5 {
+	text-decoration: underline;
+}
+
+.btn {
+	align-items: center;
 }

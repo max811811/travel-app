@@ -1,10 +1,16 @@
+from audioop import reverse
+from pyexpat import model
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Destination, Attraction
+from django.views.generic.edit import UpdateView, DeleteView
+from .models import Destination, Attraction, Review
 from .forms import ReviewForm
+
+from django.urls import reverse_lazy, reverse
+
 
 # Create your views here.
 
@@ -54,4 +60,16 @@ def add_review(request, attraction_id):
         new_review = form.save(commit=False)
         new_review.attraction_id = attraction_id
         new_review.save()
-    return redirect('attractions_detail', attraction_id=attraction_id)
+    return redirect('attractions_detail', attraction_id=attraction_id, destination_id=destination_id)
+
+class ReviewUpdate(UpdateView):
+    model = Review
+    fields = ['date', 'rating', 'review_text']
+
+class ReviewDelete(DeleteView):
+    model = Review
+
+    def get_success_url(self):
+        review_id = self.object.attraction.id
+        return reverse('attractions_detail', kwargs={'pk': review_id})
+
