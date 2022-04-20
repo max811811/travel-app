@@ -66,5 +66,5 @@ class Review(models.Model):
 		ordering = ['date']
 
 
-  def get_absolute_url(self):
-     return reverse('attractions_detail', kwargs={'destination_id': self.id, 'attraction': self.attraction.id})
+	def get_absolute_url(self):
+		return reverse('attractions_detail', kwargs={'destination_id': self.id, 'attraction': self.attraction.id})
