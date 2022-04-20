@@ -1,9 +1,11 @@
+from pyexpat import model
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Destination, Attraction
+from django.views.generic.edit import UpdateView, DeleteView
+from .models import Destination, Attraction, Review
 from .forms import ReviewForm
 from django.views.generic import TemplateView
 from .services import get_temptimezone
@@ -66,3 +68,10 @@ def add_review(request, destination_id, attraction_id):
         new_review.save()
     return redirect('attractions_detail', attraction_id=attraction_id, destination_id=destination_id)
 
+class ReviewUpdate(UpdateView):
+    model = Review
+    fields = ['date', 'rating', 'review_text']
+
+class ReviewDelete(DeleteView):
+    model = Review
+    success_url = '/attractions_detail/'

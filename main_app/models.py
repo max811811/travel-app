@@ -29,7 +29,7 @@ class Destination(models.Model):
 		return self.city
 		
 	def get_absolute_url(self):
-		return reverse('')
+		return reverse('', kwargs={'pk': self.id})
 
 class Attraction(models.Model):
 	name = models.CharField(max_length=100, default='')
@@ -60,7 +60,7 @@ class Review(models.Model):
         return f"{self.get_rating_display()} on {self.date}"
 
     def get_absolute_url(self):
-        return reverse('attractions_detail', kwargs={'attraction_id': self.id})
+        return reverse('attractions_detail', kwargs={'pk': self.id})
 
     class Meta:
         ordering = ['date']
