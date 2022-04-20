@@ -5,8 +5,6 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Destination, Attraction
 from .forms import ReviewForm
-from django.views.generic import TemplateView
-from .services import get_temptimezone
 
 # Create your views here.
 
@@ -23,15 +21,7 @@ def destinations_index(request):
 
 def destinations_detail(request, destination_id):
     destination = Destination.objects.get(id=destination_id)
-    city = Destination.objects.get(id=destination_id)
-    temp = get_temptimezone(city)
-    temperature_time_zone = {
-        "city": city,
-        "temp": temp
-    }
-    return render(request, 'destinations/detail.html', {'destination': destination, 'temperature_time_zone': temperature_time_zone})
-  
-
+    return render(request, 'destinations/detail.html', {'destination': destination})
 
 def attractions_detail(request, destination_id, attraction_id):
     destination = Destination.objects.get(id=destination_id)
@@ -58,11 +48,10 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-def add_review(request, destination_id, attraction_id):
+def add_review(request, attraction_id):
     form = ReviewForm(request.POST)
     if form.is_valid():
         new_review = form.save(commit=False)
         new_review.attraction_id = attraction_id
         new_review.save()
-    return redirect('attractions_detail', attraction_id=attraction_id, destination_id=destination_id)
-
+    return redirect('attractions_detail', attraction_id=attraction_id)
