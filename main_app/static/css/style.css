@@ -3,6 +3,7 @@ body {
 	min-height: 100vh;
 	flex-direction: column;
 	background-color: #dcdcdc;
+	font-family: 'Raleway', sans-serif;
 }
 
 main {
@@ -55,11 +56,21 @@ a {
 	padding: 20px;
 }
 
-.card-title {
+.card-title, .temp {
 	color: #5f9ea0;
 }
 
 .detail-photo {
 	display: flex;
 	justify-content: center;
+}
+
+.key-info {
+	background-color: #5f9ea0;
+	color: white;
+	border-radius: 10px;
+}
+
+h5 {
+	text-decoration: underline;
 }

@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="detail-header">Attraction details</h1>
+<h1 class="detail-header">{{ attraction.name }}</h1>
+<div class="detail-photo" >
+	<img src="{{ attraction.photo }}">
+</div>
 <div class="col s6">
     <form action="{% url 'add_review' destination.id attraction.id%}" method="POST">
         {% csrf_token %}
@@ -28,16 +31,16 @@
   </div>
 
 <script>
-    const dateEl = document.getElementById('id_date');
-    M.Datepicker.init(dateEl, {
-      format: 'yyyy-mm-dd',
-      defaultDate: new Date(),
-      setDefaultDate: true,
-      autoClose: true
-    });
-  
-    const selectEl = document.getElementById('id_rating');
-    M.FormSelect.init(selectEl);
+	const dateEl = document.getElementById('id_date');
+	M.Datepicker.init(dateEl, {
+		format: 'yyyy-mm-dd',
+		defaultDate: new Date(),
+		setDefaultDate: true,
+		autoClose: true
+	});
+
+	const selectEl = document.getElementById('id_rating');
+	M.FormSelect.init(selectEl);
 </script>
 
 {% endblock %}
