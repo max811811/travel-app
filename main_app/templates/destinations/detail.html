@@ -6,12 +6,18 @@
 <div class="detail-photo" >
 	<img src="{{ destination.photo }}">
 </div>
-<div>
-	<p>{{ destination.country }}</p>
-	<p>Timezone: {{ destination.time_zone }}</p>
-	<p class="description">{{ destination.location_description }}</p>
+<div class="row">
+	<div class="card key-info col s2 offset-s5">
+		<h5 class="detail-header">Key info:</h5>
+		<p>{{ destination.country }}</p>
+		<p>Timezone: {{ destination.time_zone }}</p>
+	</div>
+	<br>
+	
 </div>
-
+<div>
+		<p class="description">{{ destination.location_description }}</p>
+	</div>
 <div class="row">
 	{% for attraction in destination.attraction_set.all %}
 	<div class="col s3 m3">

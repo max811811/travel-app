@@ -63,3 +63,13 @@ a {
 	display: flex;
 	justify-content: center;
 }
+
+.key-info {
+	background-color: #5f9ea0;
+	color: white;
+	border-radius: 10px;
+}
+
+h5 {
+	text-decoration: underline;
+}
