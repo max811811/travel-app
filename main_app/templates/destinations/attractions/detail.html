@@ -18,9 +18,11 @@
             <td>{{review.date}}</td>
             <td>{{review.get_rating_display}}</td>
             <td>{{review.review_text}}</td>
+            <td><a href="{% url 'reviews_update' destination.id attraction.id review.id %}">Edit</a></td>
+            <td><a href="{% url 'reviews_delete' destination.id attraction.id review.id %}">Delete</a></td>
           </tr>
         {% endfor %}
-        <a href="{% url 'reviews_update' destination.id attraction.id review.id %}">Edit</a>
+        
       </tbody>
     </table>
   </div>

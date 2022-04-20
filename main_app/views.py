@@ -25,12 +25,11 @@ def destinations_detail(request, destination_id):
     destination = Destination.objects.get(id=destination_id)
     return render(request, 'destinations/detail.html', {'destination': destination})
 
-def attractions_detail(request, destination_id, attraction_id, review_id):
+def attractions_detail(request, destination_id, attraction_id):
     destination = Destination.objects.get(id=destination_id)
     attraction = Attraction.objects.get(id=attraction_id)
-    review = Review.objects.get(id=review_id)
     review_form = ReviewForm()
-    return render(request, 'destinations/attractions/detail.html', {'destination': destination, "attraction": attraction, 'review_form': review_form, 'review': review})
+    return render(request, 'destinations/attractions/detail.html', {'destination': destination, "attraction": attraction, 'review_form': review_form})
 
 def signup(request):
     error_message = ''
@@ -61,7 +60,7 @@ def add_review(request, destination_id, attraction_id):
 
 class ReviewUpdate(UpdateView):
     model = Review
-    fields = '__all__'
+    fields = ['date', 'rating', 'review_text']
 
 class ReviewDelete(DeleteView):
     model = Review
