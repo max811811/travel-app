@@ -59,12 +59,13 @@ class Review(models.Model):
 	def __str__(self):
 		return f"{self.get_rating_display()} on {self.date}"
 
-	def get_absolute_url(self):
-		return reverse('attractions_detail', kwargs={'destination_id': self.id, 'attraction_id': self.attraction.id})
+	
 
 	class Meta:
 		ordering = ['date']
 
+	def get_absolute_url(self):
+		print(self.attraction.destination)
+		return reverse('attractions_detail', kwargs={'destination_id': self.attraction.destination.id, 'attraction_id': self.attraction.id})
 
-  def get_absolute_url(self):
-     return reverse('attractions_detail', kwargs={'destination_id': self.id, 'attraction': self.attraction.id})
+	

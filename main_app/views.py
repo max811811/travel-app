@@ -80,6 +80,7 @@ class ReviewDelete(DeleteView):
     model = Review
 
     def get_success_url(self):
+        print(self.object.attraction)
         review_id = self.object.attraction.id
-        return reverse('attractions_detail', kwargs={'pk': review_id})
+        return reverse('attractions_detail', kwargs={'destination_id': self.object.attraction.destination.id, 'attraction_id': self.object.attraction.id})
 
