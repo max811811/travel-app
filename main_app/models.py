@@ -36,8 +36,8 @@ class Attraction(models.Model):
 	description = models.CharField(max_length=500)
 	location = models.CharField(max_length=100)
 	price = models.IntegerField()
-	website = models.URLField
-	# photo = models.URLField()
+	website = models.URLField(default='')
+	photo = models.URLField(default='')
         
 	destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
 
@@ -58,6 +58,9 @@ class Review(models.Model):
 
     def __str__(self):
         return f"{self.get_rating_display()} on {self.date}"
+
+    def get_absolute_url(self):
+        return reverse('attractions_detail', kwargs={'attraction_id': self.id})
 
     class Meta:
         ordering = ['date']
