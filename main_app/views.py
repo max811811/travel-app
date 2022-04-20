@@ -1,3 +1,4 @@
+from audioop import reverse
 from pyexpat import model
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
@@ -9,7 +10,9 @@ from .models import Destination, Attraction, Review
 from .forms import ReviewForm
 from django.views.generic import TemplateView
 from .services import get_temptimezone
+
 from django.urls import reverse_lazy, reverse
+
 
 # Create your views here.
 
@@ -75,6 +78,8 @@ class ReviewUpdate(UpdateView):
 
 class ReviewDelete(DeleteView):
     model = Review
+
     def get_success_url(self):
         review_id = self.object.attraction.id
         return reverse('attractions_detail', kwargs={'pk': review_id})
+

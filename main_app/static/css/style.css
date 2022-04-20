@@ -50,6 +50,7 @@ footer {
 
 a {
 	text-decoration: none;
+	color: white;
 }
 
 .col {
@@ -71,6 +72,18 @@ a {
 	border-radius: 10px;
 }
 
+td > a {
+	color: #5f9ea0;
+}
+
+a:hover {
+	opacity: 70%;
+}
+
 h5 {
 	text-decoration: underline;
+}
+
+.btn {
+	align-items: center;
 }

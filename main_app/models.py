@@ -66,6 +66,5 @@ class Review(models.Model):
 		ordering = ['date']
 
 
-	#def get_success_url(self):
-		#review_id = self.object.review.id
-		#return reverse_lazy('attractions_detail', kwargs={'pk': review_id})
+  def get_absolute_url(self):
+     return reverse('attractions_detail', kwargs={'destination_id': self.id, 'attraction': self.attraction.id})
