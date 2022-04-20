@@ -1,9 +1,11 @@
+from pyexpat import model
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Destination, Attraction
+from django.views.generic.edit import UpdateView, DeleteView
+from .models import Destination, Attraction, Review
 from .forms import ReviewForm
 
 # Create your views here.
@@ -23,11 +25,12 @@ def destinations_detail(request, destination_id):
     destination = Destination.objects.get(id=destination_id)
     return render(request, 'destinations/detail.html', {'destination': destination})
 
-def attractions_detail(request, destination_id, attraction_id):
+def attractions_detail(request, destination_id, attraction_id, review_id):
     destination = Destination.objects.get(id=destination_id)
     attraction = Attraction.objects.get(id=attraction_id)
+    review = Review.objects.get(id=review_id)
     review_form = ReviewForm()
-    return render(request, 'destinations/attractions/detail.html', {'destination': destination, "attraction": attraction, 'review_form': review_form})
+    return render(request, 'destinations/attractions/detail.html', {'destination': destination, "attraction": attraction, 'review_form': review_form, 'review': review})
 
 def signup(request):
     error_message = ''
@@ -55,3 +58,11 @@ def add_review(request, destination_id, attraction_id):
         new_review.attraction_id = attraction_id
         new_review.save()
     return redirect('attractions_detail', attraction_id=attraction_id, destination_id=destination_id)
+
+class ReviewUpdate(UpdateView):
+    model = Review
+    fields = '__all__'
+
+class ReviewDelete(DeleteView):
+    model = Review
+    success_url = '/attractions_detail/'
