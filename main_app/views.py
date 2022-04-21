@@ -8,11 +8,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView
 from .models import Destination, Attraction, Review
 from .forms import ReviewForm
-<<<<<<< HEAD
-=======
 from django.views.generic import TemplateView
 from .services import get_temptimezone, weather_description
->>>>>>> main
 
 from django.urls import reverse_lazy, reverse
 
@@ -30,10 +27,6 @@ def destinations_index(request):
 
 def destinations_detail(request, destination_id):
     destination = Destination.objects.get(id=destination_id)
-<<<<<<< HEAD
-    return render(request, 'destinations/detail.html', {'destination': destination})
-
-=======
     city = Destination.objects.get(id=destination_id)
     temp = get_temptimezone(city)
     temperature_time_zone = {
@@ -47,7 +40,6 @@ def destinations_detail(request, destination_id):
     # print(weather_description)
     return render(request, 'destinations/detail.html', {'destination': destination, 'temperature_time_zone': temperature_time_zone, 'city_weather': city_weather})
   
->>>>>>> main
 def attractions_detail(request, destination_id, attraction_id):
     destination = Destination.objects.get(id=destination_id)
     attraction = Attraction.objects.get(id=attraction_id)

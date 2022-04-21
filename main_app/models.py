@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.functions import Coalesce
 from django.urls import reverse, reverse_lazy
-from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 RATING = (
@@ -38,7 +36,7 @@ class Attraction(models.Model):
 	price = models.IntegerField()
 	website = models.URLField(default='')
 	photo = models.URLField(default='')
-        
+
 	destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
 
 	def __str__(self):
