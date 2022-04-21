@@ -53,6 +53,7 @@ footer {
 
 .card {
 	animation: fadeInDown 1500ms ease-in-out;
+	min-width: fit-content;
 }
 
 .card-content {
@@ -123,4 +124,24 @@ input {
 .home-photo > img {
 	display: flex;
 	align-items: center;
+}
+
+img {
+	width: -webkit-fill-available;
+	max-width: 600px;
+}
+
+div > .home-image {
+	background-image: url('https://github.com/hmgraves/travel-app/blob/main/destinations/seattle.jpeg');
+	background-repeat: no-repeat;
+}
+
+/* .dropdown-content{
+	width: max-content !important;
+	height:auto !important;
+} */
+
+#dropdown1 {
+	margin-top: 65px !important;
+	top: -65px;
 }
