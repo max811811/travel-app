@@ -17,7 +17,7 @@ class Destination(models.Model):
 	state = models.CharField(max_length=50, default='')
 	country = models.CharField(max_length=30)
 	time_zone = models.CharField(max_length=20)
-	location_description = models.TextField(max_length=200)
+	location_description = models.TextField(max_length=2000)
 	photo = models.URLField()
 
 	
@@ -31,7 +31,7 @@ class Destination(models.Model):
 
 class Attraction(models.Model):
 	name = models.CharField(max_length=100, default='')
-	description = models.CharField(max_length=500)
+	description = models.TextField(max_length=2000)
 	location = models.CharField(max_length=100)
 	price = models.IntegerField()
 	website = models.URLField(default='')
