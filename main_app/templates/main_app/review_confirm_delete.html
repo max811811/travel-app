@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Delete Review</h1>
+<h1 class="detail-header">Delete Review</h1>
 
-  <h4>Are you sure you want to delete <span class="teal-text">{{ object.name }}</span>?</h4>
+<h4 class="detail-header">Are you sure you want to delete your rating of "<span class="teal-text">{{ review.review_text }}</span>"?</h4>
+<hr>
+<div class="container">
+	<div class="center-align">
+		<form action="" method="POST">
+			{% csrf_token %}
+			<input type="submit" value="Yes - Delete!" class="btn">
 
-  <form action="" method="POST">
-    {% csrf_token %}
-    <input type="submit" value="Yes - Delete!" class="btn">
-    
-  </form>
+		</form>
+	</div>	
+</div>
 {% endblock %}

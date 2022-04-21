@@ -3,17 +3,20 @@ from pyexpat import model
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView
 from .models import Destination, Attraction, Review
 from .forms import ReviewForm
+<<<<<<< HEAD
+=======
+from django.views.generic import TemplateView
+from .services import get_temptimezone, weather_description
+>>>>>>> main
 
 from django.urls import reverse_lazy, reverse
 
-
 # Create your views here.
-
 
 def home(request):
     return render(request, 'home.html')
@@ -27,8 +30,24 @@ def destinations_index(request):
 
 def destinations_detail(request, destination_id):
     destination = Destination.objects.get(id=destination_id)
+<<<<<<< HEAD
     return render(request, 'destinations/detail.html', {'destination': destination})
 
+=======
+    city = Destination.objects.get(id=destination_id)
+    temp = get_temptimezone(city)
+    temperature_time_zone = {
+        "city": city,
+        "temp": temp,
+    }
+    weather = weather_description(city)
+    city_weather =  {
+        "weather": weather
+    }
+    # print(weather_description)
+    return render(request, 'destinations/detail.html', {'destination': destination, 'temperature_time_zone': temperature_time_zone, 'city_weather': city_weather})
+  
+>>>>>>> main
 def attractions_detail(request, destination_id, attraction_id):
     destination = Destination.objects.get(id=destination_id)
     attraction = Attraction.objects.get(id=attraction_id)
@@ -54,12 +73,14 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
+@login_required
 def add_review(request, destination_id, attraction_id):
     form = ReviewForm(request.POST)
     if form.is_valid():
         new_review = form.save(commit=False)
         new_review.attraction_id = attraction_id
         new_review.save()
+        print(new_review.rating)
     return redirect('attractions_detail', attraction_id=attraction_id, destination_id=destination_id)
 
 class ReviewUpdate(UpdateView):

@@ -29,6 +29,7 @@ footer.page-footer {
 footer {
 	background-color: #5f9ea0;
 	color: white;
+	font-size: 20px;
 }
 
 .detail-header, p {
@@ -36,7 +37,22 @@ footer {
 }
 
 .description {
-	font-size: 20px;
+	font-size: 25px;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+	animation: fadeInDown 1500ms ease-in-out;
 }
 
 .card-content {
@@ -46,6 +62,10 @@ footer {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 	align-items: center;
 	background-color: #ffffbf;
+}
+
+.card-content:hover {
+	opacity: 70%;
 }
 
 a {
@@ -85,5 +105,22 @@ h5 {
 }
 
 .btn {
+	align-items: center;
+}
+
+input {
+	text-align: center;
+}
+
+.about, p {
+	font-size: 20px;
+}
+
+.detail-photo {
+	animation: fadeInDown 1500ms ease-in-out;
+}
+
+.home-photo > img {
+	display: flex;
 	align-items: center;
 }
