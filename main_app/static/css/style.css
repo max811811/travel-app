@@ -64,6 +64,10 @@ footer {
 	background-color: #ffffbf;
 }
 
+.card-content:hover {
+	opacity: 70%;
+}
+
 a {
 	text-decoration: none;
 	color: white;
@@ -119,5 +123,4 @@ input {
 .home-photo > img {
 	display: flex;
 	align-items: center;
-	image-rendering: ;
 }
