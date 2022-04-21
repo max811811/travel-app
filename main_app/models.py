@@ -36,7 +36,7 @@ class Attraction(models.Model):
 	price = models.IntegerField()
 	website = models.URLField(default='')
 	photo = models.URLField(default='')
-        
+
 	destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
 
 	def __str__(self):
