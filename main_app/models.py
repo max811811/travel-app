@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.functions import Coalesce
 from django.urls import reverse, reverse_lazy
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 # Create your models here.
@@ -47,7 +49,10 @@ class Attraction(models.Model):
 	def get_absolute_url(self):
 		return reverse('attractions_detail', kwargs={'pk': self.id})
     
-
+	def review_avg(self):
+		return Review.objects.filter(attraction=self).aggregate(
+			avg=Coalesce(models.Avg('number'), 0),
+		) ['avg']
 
 class Review(models.Model):
 	date = models.DateField('review date')

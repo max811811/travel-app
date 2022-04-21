@@ -54,7 +54,7 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-def add_review(request, attraction_id):
+def add_review(request, destination_id, attraction_id):
     form = ReviewForm(request.POST)
     if form.is_valid():
         new_review = form.save(commit=False)

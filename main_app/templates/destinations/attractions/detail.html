@@ -44,6 +44,12 @@
 				</tr>
 				{% endfor %}
 			</tbody>
+			<tbody>
+				{% for attraction in attractions %}
+				<a href = "/attractions/{{ attraction.id}}/reviews"> {{ attraction.website }}</a>  
+				{{ attraction.get_avg_rating }}
+    		{% endfor %}
+			</tbody>
 		</table>
 	</div>
 </div>
