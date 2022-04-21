@@ -3,30 +3,32 @@
 
 
 <h1 class="detail-header">{{ destination.city }}</h1>
+<hr>
 <div class="detail-photo" >
 	<img src="{{ destination.photo }}">
 </div>
+<br>
 <div>
 	<div class="row">
 		<div class="card key-info col s2 offset-s5">
 			<h5 class="detail-header">Key info:</h5>
+			<p>{{ destination.state }}</p>
 			<p>{{ destination.country }}</p>
 			<p>Timezone: {{ destination.time_zone }}</p>
 		</div>
 	</div>
 	<div class="row">
-		<div class="card-content temp col s2 offset-s5">
-			<!-- <p>{{ destination.country }}</p> -->
+		<div class="card card-content temp col s4 offset-s4">
 			<h5>{{ temperature_time_zone.city }}</h5>
 			<p>Current temperature: {{ temperature_time_zone.temp }}&#8457</p>
-			<!-- <p>test: {{ temptimezone }}</p>
-			<p>Temperature Farenheit: {{ temperatureF }}</p>
-			<p class="description">{{ destination.location_description }}</p> -->
+			<p>Currently: {{ city_weather.weather }}</p>
+
 		</div>
 	</div>	
 	<div>
 		<p class="description">{{ destination.location_description }}</p>
 	</div>
+	<hr>
 	<div class="row">
 		<h4 class="detail-header">Attractions</h4>
 		{% for attraction in destination.attraction_set.all %}

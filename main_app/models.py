@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse, reverse_lazy
 
-
 # Create your models here.
 RATING = (
     (0, 'Zero'),
@@ -13,10 +12,9 @@ RATING = (
     (5, 'Five')
 )
 
-
 class Destination(models.Model):
-	
-	city = models.CharField(max_length=30)
+	city = models.CharField(max_length=50)
+	state = models.CharField(max_length=50, default='')
 	country = models.CharField(max_length=30)
 	time_zone = models.CharField(max_length=20)
 	location_description = models.TextField(max_length=200)
@@ -45,10 +43,8 @@ class Attraction(models.Model):
 		return self.name
 
 	def get_absolute_url(self):
-		return reverse('attractions_detail', kwargs={'pk': self.id})
+		return reverse('attractions_detail', kwargs={'destination_id': self.destination.id, 'attraction': self.attraction.id, 'pk': self.review.id})
     
-
-
 class Review(models.Model):
 	date = models.DateField('review date')
 	rating = models.IntegerField(choices=RATING, default=RATING[0][0])
@@ -58,14 +54,9 @@ class Review(models.Model):
 
 	def __str__(self):
 		return f"{self.get_rating_display()} on {self.date}"
-
-	
-
 	class Meta:
 		ordering = ['date']
 
 	def get_absolute_url(self):
 		print(self.attraction.destination)
 		return reverse('attractions_detail', kwargs={'destination_id': self.attraction.destination.id, 'attraction_id': self.attraction.id})
-
-	
