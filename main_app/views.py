@@ -75,13 +75,12 @@ def add_review(request, destination_id, attraction_id):
         print(new_review.rating)
     return redirect('attractions_detail', attraction_id=attraction_id, destination_id=destination_id)
 
-class ReviewUpdate(UpdateView):
+class ReviewUpdate(UpdateView, LoginRequiredMixin):
     model = Review
     fields = ['date', 'rating', 'review_text']
 
-class ReviewDelete(DeleteView):
+class ReviewDelete(DeleteView, LoginRequiredMixin):
     model = Review
-
     def get_success_url(self):
         print(self.object.attraction)
         review_id = self.object.attraction.id
