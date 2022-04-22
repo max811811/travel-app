@@ -1,7 +1,7 @@
 # Travel App
 
 ## Description:
-The travel app is one of the most intractive app to enjoy a city. As a user, you can check today's weather and general information, while also reading and leaving reviews for other members.  Getting a real review from real people who've visited and experienced these attractions.  
+The travel app is an interactive guide to explore your favorite cities. As a user, you can check today's weather and general information, while also reading and leaving reviews for other members.  Getting a real review from real people who've visited and experienced these attractions.  
 
 ## ScreenShots:
 - ![1](https://user-images.githubusercontent.com/55121344/164543419-0bc7ae4d-88c5-4e59-9471-fae149c9922d.png)
